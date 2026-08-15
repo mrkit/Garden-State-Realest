@@ -37,24 +37,34 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- ============ TOP BAR ============ -->
+    <header class="topbar">
+      <a href="#" class="logo">
+        <span>Garden State</span>
+        <span class="logo__accent">Real Estate</span>
+      </a>
+      <nav class="topbar__nav">
+        <a href="#lifestyle" class="nav-link">Lifestyle</a>
+        <a href="#properties" class="nav-link">Properties</a>
+        <a href="#contact" class="nav-link">Inquire</a>
+      </nav>
+    </header>
+
     <!-- ============ HERO ============ -->
-    <header class="hero">
+    <section class="hero">
       <img
         class="hero__bg"
         src="images/hero-mill.png"
         alt="Historic stone grist mill beside a river in Northwest New Jersey"
       />
-      <div class="hero__card">
-        <h1>Ready to start<br />a new chapter?</h1>
-        <div class="hero__actions">
-          <a class="btn btn--ghost" href="#list">List your home</a>
-          <a class="btn btn--solid" href="#buy">Buy a home</a>
-        </div>
+      <div class="hero__content">
+        <span class="hero__tag">Northwest New Jersey</span>
+        <h1>Exclusive Living. Refined Real&nbsp;Estate.</h1>
       </div>
-    </header>
+    </section>
 
     <!-- ============ ONE HOUR ============ -->
-    <section class="band band--dark split">
+    <section class="band band--dark split" id="lifestyle">
       <div class="split__text">
         <h2 class="h-serif">One hour can<br />change everything</h2>
         <p>Trade the noise for birdsong.</p>
@@ -75,7 +85,7 @@
     </section>
 
     <!-- ============ AREAS OF SPECIALTY ============ -->
-    <section class="band band--light">
+    <section class="band band--light" id="properties">
       <h2 class="h-sans center">Areas of Specialty</h2>
       <ul class="cards">
         <li class="card">
@@ -177,7 +187,7 @@
     <footer class="footer" id="contact">
       <h2 class="h-serif footer__title">Get in touch</h2>
       <div class="footer__details">
-        <p><strong>Tel:</strong> <a href="tel:+19089890935">(908) 989-0935</a></p>
+        <p><strong>Tel:</strong> <a href="tel:+19087679338">(908) 767-9338</a></p>
         <p>
           <strong>Email:</strong>
           <a href="mailto:hello@gardenstaterealest.com">hello@gardenstaterealest.com</a>
