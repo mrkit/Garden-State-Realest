@@ -43,7 +43,17 @@
         <span>Garden State</span>
         <span class="logo__accent">Real Estate</span>
       </a>
-      <nav class="topbar__nav">
+      <button
+        class="nav-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="topbar__nav" id="site-nav">
         <a href="#lifestyle" class="nav-link">Lifestyle</a>
         <a href="#properties" class="nav-link">Properties</a>
         <a href="#contact" class="nav-link">Inquire</a>
@@ -229,5 +239,20 @@
       <a href="#terms">Terms &amp; Support</a>
       <a href="#privacy">Privacy Policy</a>
     </div>
+    <script>
+      const toggle = document.querySelector(".nav-toggle");
+      const topbar = document.querySelector(".topbar");
+      toggle.addEventListener("click", () => {
+        const open = topbar.classList.toggle("topbar--open");
+        toggle.setAttribute("aria-expanded", open);
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+      document.querySelectorAll(".topbar__nav a").forEach((link) =>
+        link.addEventListener("click", () => {
+          topbar.classList.remove("topbar--open");
+          toggle.setAttribute("aria-expanded", "false");
+        }),
+      );
+    </script>
   </body>
 </html>
