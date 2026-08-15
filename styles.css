@@ -1,0 +1,450 @@
+/* =========================================================
+   Garden State Real Estate
+   Rebuild of the Canva "GSRE Web" one-page design.
+   ========================================================= */
+
+:root {
+  --ink: #1c1b19; /* near-black text and solid buttons */
+  --charcoal: #3b3a37; /* dark section background */
+  --cream: #f1ece4; /* text on dark, hero card background */
+  --cream-dim: #d9d3c9; /* body copy on dark */
+  --paper: #ffffff; /* light section background */
+  --hairline: #2f2e2c; /* thin rules over light backgrounds */
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --band-y: clamp(3.5rem, 8vw, 7rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 0.55vw + 0.95rem, 1.3rem);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Shared headings ---------- */
+
+.h-serif {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.15;
+  margin: 0 0 1.1rem;
+  font-size: clamp(1.85rem, 3.2vw, 2.9rem);
+}
+
+.h-sans {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin: 0 0 3rem;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  color: #3f3e3b;
+}
+
+.center {
+  text-align: center;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: clamp(28rem, 62vw, 46rem);
+  display: grid;
+  place-items: start center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero__card {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(3rem, 8vw, 6rem);
+  background: var(--cream);
+  padding: clamp(1.75rem, 3.5vw, 3rem) clamp(2rem, 5vw, 4.5rem);
+  text-align: center;
+  max-width: min(90vw, 34rem);
+}
+
+.hero__card h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.2;
+  font-size: clamp(1.5rem, 3.6vw, 2.6rem);
+  margin: 0 0 1.6rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  padding: 0.62em 1.5em;
+  border: 1px solid var(--ink);
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.btn--solid {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn--solid:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* =========================================================
+   BANDS
+   ========================================================= */
+
+/* Full-bleed background, content centred and capped at --measure. */
+.band {
+  --measure: 76rem;
+  padding-block: var(--band-y);
+  padding-inline: max(var(--gutter), calc((100% - var(--measure)) / 2));
+}
+
+.band--dark {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+.band--light {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.band--dark .h-serif {
+  color: var(--cream);
+}
+.band--dark p {
+  color: var(--cream-dim);
+}
+
+/* ---------- Two-column split ---------- */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .split {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+  .split--reverse .split__media {
+    order: -1;
+  }
+}
+
+.split__text {
+  text-align: center;
+}
+.split--reverse .split__text {
+  text-align: left;
+}
+
+.split__text p {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.15rem, 0.5vw + 1.05rem, 1.4rem);
+}
+.split__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images keep their own aspect ratio, so nothing gets cropped. */
+.split__media img {
+  width: 100%;
+  height: auto;
+  object-position: center top;
+}
+
+/* Tall photos stay narrow instead of filling the column. */
+.split__media--portrait {
+  max-width: 22rem;
+  margin-inline: auto;
+}
+
+.rule-short {
+  border: 0;
+  border-top: 2px solid var(--cream-dim);
+  width: 2.6rem;
+  margin: 0 0 1.6rem;
+}
+
+/* =========================================================
+   CARD ROWS  (Areas of Specialty / Let's Work Together)
+   ========================================================= */
+
+.cards {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 72rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.card {
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.1rem;
+}
+
+/* The middle card sits lower than its neighbours, as in the original. */
+@media (min-width: 850px) {
+  .card--drop {
+    margin-top: 2.25rem;
+  }
+}
+
+.card a {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.card a:hover img {
+  transform: scale(1.03);
+}
+
+.card__label {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.6rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  color: #17160f;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.55);
+}
+
+.card__label--bottom {
+  top: auto;
+  bottom: 0.6rem;
+}
+
+.rule-heavy {
+  border: 0;
+  border-top: 3px solid var(--ink);
+  width: min(30rem, 60%);
+  margin: clamp(3rem, 7vw, 5.5rem) auto 0;
+}
+
+/* =========================================================
+   CLOSER: pills over the streetscape illustration
+   ========================================================= */
+
+.closer {
+  position: relative;
+  background: var(--paper);
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.pills {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.75rem);
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(-1rem, -1vw, 0rem);
+}
+
+.pill {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.7em 1.7em;
+  white-space: nowrap;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.pill:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.closer__art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: -1.5rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .footer {
+    grid-template-columns: 1fr 1fr auto;
+    justify-items: start;
+    text-align: left;
+    gap: 2.5rem;
+    margin-inline: auto;
+  }
+}
+
+.footer__title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.footer__details p {
+  margin: 0 0 0.35rem;
+  color: var(--cream-dim);
+}
+.footer__details strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+.footer__details a {
+  text-decoration: none;
+}
+.footer__details a:hover {
+  text-decoration: underline;
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.9rem;
+  color: var(--cream);
+}
+.footer__social a {
+  display: inline-flex;
+  opacity: 0.9;
+}
+.footer__social a:hover {
+  opacity: 1;
+}
+
+/* ---------- Legal strip ---------- */
+
+.legal {
+  background: #000;
+  color: #cfcbc4;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.65rem var(--gutter);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legal a {
+  text-decoration: none;
+}
+.legal a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
