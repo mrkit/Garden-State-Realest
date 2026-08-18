@@ -438,6 +438,12 @@ a {
   transform: scale(1.03);
 }
 
+/* Warren's photo is portrait; bias the crop toward the house (bottom),
+   not the autumn tree canopy that otherwise fills the 4:3 frame. */
+.card--warren img {
+  object-position: center bottom;
+}
+
 .card__label {
   position: absolute;
   left: 0.75rem;
@@ -446,9 +452,11 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  line-height: 1.2;
   color: #17160f;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.3em 0.55em;
 }
 
 .card__label--bottom {
