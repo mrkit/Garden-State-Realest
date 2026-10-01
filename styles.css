@@ -549,12 +549,10 @@ a {
   font-size: 0.85rem;
 }
 
-.site-footer a {
+/* Footer is plain text: no links, no hover effects. */
+.site-footer__col > span,
+.site-footer__social {
   color: var(--cream);
-  text-decoration: none;
-}
-.site-footer a:hover {
-  color: var(--footer-red);
 }
 
 .site-footer__top {
@@ -615,7 +613,7 @@ a {
   gap: 0.9rem;
   margin-top: 0.4rem;
 }
-.site-footer__social a {
+.site-footer__social span {
   display: inline-flex;
 }
 
@@ -636,10 +634,6 @@ a {
   display: flex;
   gap: 1.5rem;
 }
-.site-footer__bottom a {
-  color: #a9a49b;
-}
-
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
