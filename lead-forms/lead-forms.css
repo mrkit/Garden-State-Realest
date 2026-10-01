@@ -354,3 +354,60 @@ html.lf-locked {
   background: #f7f4ef;
   padding: 0.75rem;
 }
+
+/* ---------- One-row form over the Main Street illustration ---------- */
+
+.lf-form--band {
+  grid-template-columns: 1fr;
+  gap: 0.9rem 1rem;
+  align-items: end;
+}
+.lf-form--band .lf-row {
+  display: contents;
+}
+.lf-form--band .lf-eyebrow,
+.lf-form--band .lf-title,
+.lf-form--band .lf-intro,
+.lf-form--band .lf-consent,
+.lf-form--band .lf-note {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+.lf-form--band .lf-title {
+  margin: -0.4rem 0 0;
+}
+.lf-form--band .lf-intro {
+  margin: -0.3rem 0 0.5rem;
+}
+.lf-form--band .lf-submit {
+  order: 1;
+  justify-self: stretch;
+  padding-block: 0.68em;
+}
+.lf-form--band .lf-consent,
+.lf-form--band .lf-note {
+  order: 2;
+}
+
+/* Two columns, Send centred on its own line. */
+@media (min-width: 560px) {
+  .lf-form--band {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lf-form--band .lf-submit {
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding-inline: 3em;
+  }
+}
+
+/* Everything on one line, Send at the end. */
+@media (min-width: 960px) {
+  .lf-form--band {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  }
+  .lf-form--band .lf-submit {
+    grid-column: auto;
+    padding-inline: 1.9em;
+  }
+}

@@ -131,6 +131,30 @@
     },
   };
 
+  /* One-row version of the inquiry form that sits above the
+     Main Street illustration (same idea as exitconnect.me). */
+  FORMS.band = {
+    ...FORMS.contact,
+    fields: [
+      CONTACT_FIELDS[0],
+      CONTACT_FIELDS[1],
+      FORMS.contact.fields.find((f) => f.name === "Interested in"),
+    ],
+  };
+
+  /* Exit pop-up: shown once per visit when a desktop visitor heads
+     for the tab bar or address bar (same rules as exitconnect.me). */
+  FORMS.stay = {
+    type: "Stay in touch",
+    eyebrow: "Before you go",
+    title: "Let\u2019s keep in touch",
+    intro: "Leave your name and email and we\u2019ll be here whenever you need us.",
+    fields: [
+      ...CONTACT_FIELDS.slice(0, 2),
+      { name: "Interested in", label: "I\u2019m interested in", type: "select", options: ["Buying", "Selling", "Development", "Just browsing"] },
+    ],
+  };
+
   /* Existing links on the page and the form each one opens.
      The optional object pre-fills fields. */
   const ROUTES = {
@@ -445,7 +469,27 @@
     });
     // Ad and QR links: ?form=sell | buy | build | contact (same scheme as exitconnect.me).
     const want = (query.get("form") || "").toLowerCase();
-    if (FORMS[want]) setTimeout(() => openForm(want), 500);
+    if (FORMS[want]) {
+      setTimeout(() => openForm(want), 500);
+      store("gsre_exit", "1");
+    }
+    armExitIntent();
+  }
+
+  /* One gentle offer when a desktop visitor heads for the tab bar.
+     Waits 8 seconds, once per visit, never after a form was sent
+     or while another pop-up is open, never on phones. */
+  function armExitIntent() {
+    let armed = false;
+    setTimeout(() => (armed = true), 8000);
+    document.addEventListener("mouseout", (e) => {
+      if (!armed || e.relatedTarget || e.clientY > 0) return;
+      if (store("gsre_exit") || store("gsre_done") || dialog?.open) return;
+      if (window.matchMedia("(max-width: 760px), (hover: none)").matches) return;
+      store("gsre_exit", "1");
+      armed = false;
+      openForm("stay");
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

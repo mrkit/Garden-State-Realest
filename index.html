@@ -187,6 +187,9 @@
         <a class="pill" href="#buyers">For Buyers <span aria-hidden="true">&rarr;</span></a>
         <a class="pill" href="#developers">For Developers <span aria-hidden="true">&rarr;</span></a>
       </nav>
+      <div class="closer__form" id="inquire">
+        <div data-lead-form="band"></div>
+      </div>
       <img
         class="closer__art"
         src="images/streetscape.png"
@@ -194,57 +197,57 @@
       />
     </section>
 
-    <!-- ============ LEAD FORM ============ -->
-    <section class="lf-section" id="inquire">
-      <div data-lead-form="contact"></div>
-    </section>
-
     <!-- ============ FOOTER ============ -->
-    <footer class="footer" id="contact">
-      <h2 class="h-serif footer__title">Get in touch</h2>
-      <div class="footer__details">
-        <p><strong>Tel:</strong> <a href="tel:+19087679338">(908) 767-9338</a></p>
-        <p>
-          <strong>Email:</strong>
-          <a href="mailto:hello@gardenstaterealest.com">hello@gardenstaterealest.com</a>
-        </p>
-        <p>
-          <strong>Social:</strong>
-          <a href="https://www.instagram.com/gardenstaterealest/" target="_blank" rel="noopener"
-            >@gardenstaterealest</a
-          >
-        </p>
+    <footer class="site-footer" id="contact">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a href="#" class="logo site-footer__logo">
+            <span>Garden State</span>
+            <span class="logo__accent">Real Estate</span>
+          </a>
+          <p>Northwest New Jersey real estate.<br />Warren, Sussex and Morris County.</p>
+        </div>
+        <nav class="site-footer__col" aria-label="Explore">
+          <h2 class="site-footer__heading">Explore</h2>
+          <a href="#lifestyle">Lifestyle</a>
+          <a href="#properties">Properties</a>
+          <a href="#inquire">Inquire</a>
+        </nav>
+        <nav class="site-footer__col" aria-label="Work with us">
+          <h2 class="site-footer__heading">Work with us</h2>
+          <a href="#sellers">For Sellers</a>
+          <a href="#buyers">For Buyers</a>
+          <a href="#developers">For Developers</a>
+        </nav>
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Contact</h2>
+          <a href="tel:+19087679338">(908) 767-9338</a>
+          <div class="site-footer__social">
+            <a href="https://www.facebook.com/gardenstaterealest" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"
+                />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/gardenstaterealest/" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5.5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="footer__social">
-        <a href="https://www.facebook.com/gardenstaterealest" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
-            <path
-              d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"
-            />
-          </svg>
-        </a>
-        <a href="https://www.instagram.com/gardenstaterealest/" aria-label="Instagram">
-          <svg
-            viewBox="0 0 24 24"
-            width="26"
-            height="26"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <rect x="2" y="2" width="20" height="20" rx="5.5" />
-            <circle cx="12" cy="12" r="4.5" />
-            <circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none" />
-          </svg>
-        </a>
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 Garden State Real Estate</span>
+        <span class="site-footer__legal">
+          <a href="#terms">Terms &amp; Support</a>
+          <a href="#privacy">Privacy Policy</a>
+        </span>
       </div>
     </footer>
-
-    <div class="legal">
-      <a href="#terms">Terms &amp; Support</a>
-      <a href="#privacy">Privacy Policy</a>
-    </div>
     <script>
       const toggle = document.querySelector(".nav-toggle");
       const topbar = document.querySelector(".topbar");
