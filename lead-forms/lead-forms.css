@@ -1,0 +1,356 @@
+/* =========================================================
+   Garden State Real Estate — lead capture forms
+   Every selector is prefixed .lf- so nothing here can change
+   the existing site styles. Uses the site's own variables.
+   ========================================================= */
+
+.lf-form,
+.lf-thanks {
+  display: grid;
+  gap: 1.1rem;
+  font-family: var(--font-body, Georgia, serif);
+  color: var(--ink, #1c1b19);
+}
+
+.lf-eyebrow {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--champagne-gold, #c5a059);
+}
+
+.lf-title {
+  margin: -0.5rem 0 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.15;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+}
+
+.lf-intro {
+  margin: -0.4rem 0 0.4rem;
+  font-size: clamp(1.1rem, 0.4vw + 1rem, 1.25rem);
+  line-height: 1.5;
+}
+
+/* ---------- Fields ---------- */
+
+.lf-row {
+  display: grid;
+  gap: 1.1rem;
+}
+@media (min-width: 560px) {
+  .lf-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lf-field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.lf-label,
+.lf-choices legend {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lf-req {
+  color: var(--accent-red, #8b2626);
+}
+
+.lf-form input:not([type="radio"]):not([type="checkbox"]),
+.lf-form select,
+.lf-form textarea {
+  width: 100%;
+  font: inherit;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  color: var(--ink, #1c1b19);
+  background: #fff;
+  border: 1px solid #bdb6aa;
+  border-radius: 2px;
+  padding: 0.75em 0.85em;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.lf-form textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+.lf-form select {
+  appearance: none;
+  padding-right: 2.2em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231c1b19' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9em center;
+}
+
+.lf-form input:focus,
+.lf-form select:focus,
+.lf-form textarea:focus {
+  outline: none;
+  border-color: var(--ink, #1c1b19);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.35);
+}
+
+/* Choice pills: radios and checkboxes */
+.lf-choices {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.lf-choices legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+.lf-choices__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.lf-choice {
+  position: relative;
+  cursor: pointer;
+}
+.lf-choice input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.lf-choice span {
+  display: inline-block;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.5em 1.1em;
+  border: 1.5px solid var(--ink, #1c1b19);
+  border-radius: 999px;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.lf-choice input:checked + span {
+  background: var(--ink, #1c1b19);
+  color: #fff;
+}
+.lf-choice input:focus-visible + span {
+  outline: 2px solid var(--champagne-gold, #c5a059);
+  outline-offset: 2px;
+}
+
+/* ---------- Submit, consent, messages ---------- */
+
+.lf-submit {
+  justify-self: start;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--ink, #1c1b19);
+  border: 2px solid var(--ink, #1c1b19);
+  border-radius: 999px;
+  padding: 0.75em 1.9em;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.lf-submit:hover:not(:disabled) {
+  background: transparent;
+  color: var(--ink, #1c1b19);
+}
+.lf-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.lf-submit:focus-visible {
+  outline: 2px solid var(--champagne-gold, #c5a059);
+  outline-offset: 3px;
+}
+
+.lf-consent {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: #6b665e;
+}
+
+.lf-note {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  background: #f1ece4;
+  border-left: 2px solid var(--champagne-gold, #c5a059);
+}
+.lf-note--error {
+  border-left-color: var(--accent-red, #8b2626);
+}
+
+/* Honeypot: off-screen, not display:none (some bots skip hidden fields). */
+.lf-hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.lf-thanks:focus {
+  outline: none;
+}
+
+/* ---------- Pop-up ---------- */
+
+html.lf-locked {
+  overflow: hidden;
+}
+
+.lf-dialog {
+  width: min(40rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 0;
+  border-top: 4px solid var(--ink, #1c1b19);
+  background: var(--cream, #f1ece4);
+  color: var(--ink, #1c1b19);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.lf-dialog::backdrop {
+  background: rgba(15, 35, 28, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.lf-dialog[open] {
+  animation: lf-pop 0.25s ease;
+}
+@keyframes lf-pop {
+  from {
+    transform: translateY(12px);
+    opacity: 0.6;
+  }
+}
+
+.lf-dialog__inner {
+  position: relative;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.lf-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--ink, #1c1b19);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.lf-close:focus-visible {
+  outline: 2px solid var(--champagne-gold, #c5a059);
+}
+
+@media (max-width: 559px) {
+  .lf-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100dvh;
+    height: 100dvh;
+    margin: 0;
+  }
+  .lf-dialog__inner {
+    max-height: 100dvh;
+    padding: 3.25rem 1rem 2rem;
+  }
+  .lf-submit {
+    justify-self: stretch;
+  }
+}
+
+/* ---------- Inline section (optional, above the footer) ---------- */
+
+.lf-section {
+  background: var(--charcoal, #3b3a37);
+  padding: var(--band-y, 5rem) var(--gutter, 1.25rem);
+}
+.lf-section > div {
+  max-width: 44rem;
+  margin-inline: auto;
+  background: var(--cream, #f1ece4);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lf-dialog[open] {
+    animation: none;
+  }
+}
+
+/* ---------- Preview panel (preview page only) ---------- */
+
+.lf-preview {
+  margin-top: 0.5rem;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border: 1px dashed #bdb6aa;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.lf-preview__tag {
+  margin: 0 0 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-red, #8b2626);
+}
+.lf-preview h3 {
+  margin: 1rem 0 0.4rem;
+  font-size: 0.85rem;
+}
+.lf-preview p {
+  margin: 0 0 0.25rem;
+}
+.lf-preview table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.lf-preview th,
+.lf-preview td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #e3ddd3;
+  overflow-wrap: anywhere;
+}
+.lf-preview th {
+  width: 38%;
+  background: #f7f4ef;
+  font-weight: 500;
+}
+.lf-preview pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: inherit;
+  background: #f7f4ef;
+  padding: 0.75rem;
+}

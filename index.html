@@ -35,6 +35,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="lead-forms/lead-forms.css" />
   </head>
   <body>
     <!-- ============ TOP BAR ============ -->
@@ -56,7 +57,7 @@
       <nav class="topbar__nav" id="site-nav">
         <a href="#lifestyle" class="nav-link">Lifestyle</a>
         <a href="#properties" class="nav-link">Properties</a>
-        <a href="#contact" class="nav-link">Inquire</a>
+        <a href="#inquire" class="nav-link">Inquire</a>
       </nav>
     </header>
 
@@ -193,6 +194,11 @@
       />
     </section>
 
+    <!-- ============ LEAD FORM ============ -->
+    <section class="lf-section" id="inquire">
+      <div data-lead-form="contact"></div>
+    </section>
+
     <!-- ============ FOOTER ============ -->
     <footer class="footer" id="contact">
       <h2 class="h-serif footer__title">Get in touch</h2>
@@ -254,5 +260,6 @@
         }),
       );
     </script>
+    <script src="lead-forms/lead-forms.js" defer></script>
   </body>
 </html>
