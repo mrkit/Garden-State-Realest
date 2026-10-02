@@ -415,3 +415,92 @@ html.lf-locked {
     padding-inline: 1.9em;
   }
 }
+
+/* =========================================================
+   Compact layout (2026-10-01): 14px field corners, fields three
+   across in a wider pop-up, tighter spacing, so every form fits
+   on a laptop screen without scrolling.
+   ========================================================= */
+
+.lf-form input:not([type="radio"]):not([type="checkbox"]),
+.lf-form select,
+.lf-form textarea {
+  border-radius: 14px;
+  padding-inline: 1em;
+}
+
+.lf-form select {
+  padding-right: 2.4em;
+  background-position: right 1em center;
+}
+
+/* ---------- Condensed forms (fit without scrolling) ---------- */
+
+.lf-form {
+  gap: 0.8rem;
+}
+
+.lf-field {
+  gap: 0.3rem;
+}
+
+.lf-row {
+  gap: 0.8rem;
+}
+
+@media (min-width: 560px) {
+  .lf-row--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.lf-form input:not([type="radio"]):not([type="checkbox"]),
+.lf-form select,
+.lf-form textarea {
+  padding-block: 0.6em;
+  font-size: 0.9rem;
+}
+
+.lf-form textarea {
+  min-height: 4.5rem;
+}
+
+.lf-choice span {
+  padding: 0.4em 1em;
+}
+
+/* Pop-up: wider so fields sit three across, tighter heading. */
+.lf-dialog {
+  width: min(52rem, calc(100% - 2rem));
+}
+
+.lf-dialog__inner {
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.lf-dialog .lf-title {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
+.lf-dialog .lf-intro {
+  margin: -0.5rem 0 0.2rem;
+  font-size: 1.05rem;
+}
+
+/* Pop-ups: the heading says what the form is for, so drop the small label. */
+.lf-dialog .lf-form > .lf-eyebrow {
+  display: none;
+}
+
+/* "Best way to reach you": label and choices on one line. */
+.lf-choices:has(input[type="radio"]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  align-self: end;
+}
+.lf-choices:has(input[type="radio"]) legend {
+  float: left;
+  margin: 0;
+}

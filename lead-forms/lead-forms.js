@@ -47,8 +47,8 @@
   ];
 
   const CONTACT_FIELDS = [
-    { name: "name", label: "Name", type: "text", required: true, autocomplete: "name" },
     { row: [
+      { name: "name", label: "Name", type: "text", required: true, autocomplete: "name" },
       { name: "email", label: "Email", type: "email", required: true, autocomplete: "email" },
       { name: "phone", label: "Phone", type: "tel", autocomplete: "tel" },
     ] },
@@ -68,8 +68,8 @@
       title: "Thinking about selling?",
       intro: "Tell us a little about your property and we’ll be in touch at your convenience to talk through your options.",
       fields: [
-        { name: "Property address", label: "Property address", type: "text", autocomplete: "street-address" },
         { row: [
+          { name: "Property address", label: "Property address", type: "text", autocomplete: "street-address" },
           { name: "Property type", label: "Property type", type: "select", options: ["Single-family home", "Historic home", "Farm or estate", "Multi-family", "Land", "Commercial"] },
           { name: "Timeline", label: "Timing", type: "select", options: TIMELINE },
         ] },
@@ -88,12 +88,13 @@
         { row: [
           { name: "Property type", label: "Property type", type: "select", options: ["Single-family home", "Historic home", "Farm or acreage", "Land", "Multi-family", "Commercial"] },
           { name: "Price range", label: "Price range", type: "select", options: ["Under $400k", "$400k to $600k", "$600k to $850k", "$850k to $1.2M", "$1.2M+"] },
-        ] },
-        { row: [
           { name: "Timeline", label: "Timing", type: "select", options: TIMELINE },
-          { name: "Moving from", label: "Where are you moving from?", type: "select", options: ["New York City", "Elsewhere in New Jersey", "Somewhere else"] },
         ] },
-        ...CONTACT_FIELDS,
+        CONTACT_FIELDS[0],
+        { row: [
+          { name: "Moving from", label: "Where are you moving from?", type: "select", options: ["New York City", "Elsewhere in New Jersey", "Somewhere else"] },
+          CONTACT_FIELDS[1],
+        ] },
         NOTES,
       ],
     },
@@ -110,9 +111,9 @@
         ] },
         { row: [
           { name: "Location or parcel", label: "Location or parcel", type: "text", placeholder: "Town, street or block and lot" },
-          { name: "Acreage", label: "Approximate acreage", type: "text", inputmode: "decimal" },
+          { name: "Acreage", label: "Acreage", type: "text", inputmode: "decimal" },
+          { name: "Timeline", label: "Timing", type: "select", options: TIMELINE },
         ] },
-        { name: "Timeline", label: "Timing", type: "select", options: TIMELINE },
         ...CONTACT_FIELDS,
         NOTES,
       ],
@@ -124,7 +125,7 @@
       title: "Start a conversation",
       intro: "Tell us a little about what you have in mind and we’ll be in touch at your convenience.",
       fields: [
-        ...CONTACT_FIELDS.slice(0, 2),
+        CONTACT_FIELDS[0],
         { name: "Interested in", label: "I’m interested in", type: "select", options: ["Buying", "Selling", "Development", "Something else"] },
         { name: "message", label: "Message", type: "textarea" },
       ],
@@ -137,7 +138,6 @@
     ...FORMS.contact,
     fields: [
       CONTACT_FIELDS[0],
-      CONTACT_FIELDS[1],
       FORMS.contact.fields.find((f) => f.name === "Interested in"),
     ],
   };
@@ -150,7 +150,7 @@
     title: "Let\u2019s keep in touch",
     intro: "Leave your name and email and we\u2019ll be here whenever you need us.",
     fields: [
-      ...CONTACT_FIELDS.slice(0, 2),
+      CONTACT_FIELDS[0],
       { name: "Interested in", label: "I\u2019m interested in", type: "select", options: ["Buying", "Selling", "Development", "Just browsing"] },
     ],
   };
@@ -219,7 +219,7 @@
     el("span", { class: "lf-label" }, f.label, f.required ? el("span", { class: "lf-req", "aria-hidden": "true", text: " *" }) : null);
 
   function buildField(f) {
-    if (f.row) return el("div", { class: "lf-row" }, ...f.row.map(buildField));
+    if (f.row) return el("div", { class: `lf-row lf-row--${f.row.length}` }, ...f.row.map(buildField));
 
     const id = `lf-${++uid}`;
 
@@ -253,7 +253,7 @@
         ...f.options.map((opt) => el("option", { value: opt, text: opt })),
       );
     } else if (f.type === "textarea") {
-      control = el("textarea", { id, name: f.name, rows: 4 });
+      control = el("textarea", { id, name: f.name, rows: 2 });
     } else {
       control = el("input", {
         id,
