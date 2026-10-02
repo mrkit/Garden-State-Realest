@@ -79,7 +79,7 @@
   color: var(--ink, #1c1b19);
   background: #fff;
   border: 1px solid #bdb6aa;
-  border-radius: 2px;
+  border-radius: 10px;
   padding: 0.75em 0.85em;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
@@ -193,6 +193,7 @@
   padding: 0.75rem 0.9rem;
   background: #f1ece4;
   border-left: 2px solid var(--champagne-gold, #c5a059);
+  border-radius: 12px;
 }
 .lf-note--error {
   border-left-color: var(--accent-red, #8b2626);
@@ -223,6 +224,8 @@ html.lf-locked {
   padding: 0;
   border: 0;
   border-top: 4px solid var(--ink, #1c1b19);
+  border-radius: 24px;
+  overflow: hidden;
   background: var(--cream, #f1ece4);
   color: var(--ink, #1c1b19);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
@@ -311,6 +314,7 @@ html.lf-locked {
   padding: 1rem 1.1rem;
   background: #fff;
   border: 1px dashed #bdb6aa;
+  border-radius: 16px;
   font-family: var(--font-sans, sans-serif);
   font-size: 0.82rem;
   line-height: 1.5;

@@ -245,6 +245,18 @@ a {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* Slow push-in, like a camera moving closer, then easing back out. */
+  transform-origin: 60% 45%;
+  animation: hero-push-in 30s ease-in-out infinite alternate;
+}
+
+@keyframes hero-push-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
 }
 
 .hero::after {
@@ -605,7 +617,7 @@ a {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--footer-red);
+  color: #a9a49b;
 }
 
 .site-footer__social {
@@ -639,6 +651,9 @@ a {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero__bg {
+    animation: none;
   }
   * {
     transition: none !important;
